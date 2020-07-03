@@ -47,6 +47,8 @@ export class LandingPageComponent implements OnInit, OnDestroy {
 
   calculateCharge() {
 
+    // to do: regras matemáticas
+
     if (this.origem == null || this.origem == undefined) {
       this.toastr.error('O campo origem é obrigatório!');
     } else if (this.destino == null || this.destino == undefined) {
