@@ -1,0 +1,123 @@
+<div class="row text-center mt-2">
+
+    <div class="col-12 imageHeader">
+        <img src="assets/vizir-logo.png" alt="vizirLogo" id="vizirLogo">
+    </div>
+
+    <div id="separator"></div>
+
+</div>
+
+<div class="row justify-content-center">
+    <div class="col text-center mt-3">
+        <button type="button" id="buttonToTableAction" class="btn btn-secondary" (click)="showValuesTable()">{{!verValores ? 'VISUALIZAR VALORES' : 'ESCONDER VALORES'}}</button>
+    </div>
+</div>
+
+<div class="row mt-3 justify-content-center scale-in-top" *ngIf="verValores">
+
+    <div class="col-8 text-center">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ORIGEM</th>
+                        <th scope="col">DESTINO</th>
+                        <th scope="col">$/MIN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>011</td>
+                        <td>016</td>
+                        <td>1.90</td>
+                    </tr>
+                    <tr>
+                        <td>016</td>
+                        <td>011</td>
+                        <td>2.90</td>
+                    </tr>
+                    <tr>
+                        <td>011</td>
+                        <td>017</td>
+                        <td>1.70</td>
+                    </tr>
+                    <tr>
+                        <td>017</td>
+                        <td>011</td>
+                        <td>2.70</td>
+                    </tr>
+                    <tr>
+                        <td>011</td>
+                        <td>018</td>
+                        <td>0.90</td>
+                    </tr>
+                    <tr>
+                        <td>018</td>
+                        <td>011</td>
+                        <td>1.90</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="row mx-2 mt-3 scale-in-top" *ngIf="!verValores">
+
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="form-group">
+            <label>Origem</label>
+            <select class="form-control" [(ngModel)]="origem">
+              <option [ngValue]="undefined">SELECIONE</option>
+              <option [ngValue]="11">11</option>
+              <option [ngValue]="16">16</option>
+              <option [ngValue]="17">17</option>
+              <option [ngValue]="18">18</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="form-group">
+            <label>Destino</label>
+            <select class="form-control" [(ngModel)]="destino">
+              <option [ngValue]="undefined">SELECIONE</option>
+              <option [ngValue]="11">11</option>
+              <option [ngValue]="16">16</option>
+              <option [ngValue]="17">17</option>
+              <option [ngValue]="18">18</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="form-group">
+            <label>Minutos</label>
+            <input type="number" class="form-control" [(ngModel)]="minutos" placeholder="Ex: 10">
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="form-group">
+            <label>Plano</label>
+            <select class="form-control" [(ngModel)]="plano">
+                <option [ngValue]="undefined">SELECIONE</option>
+                <option [ngValue]="30">30</option>
+                <option [ngValue]="60">60</option>
+                <option [ngValue]="120">120</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col text-center mt-3">
+        <button type="button" id="buttonToCalculateCharge" class="btn btn-success" (click)="calculateCharge()">CALCULAR</button>
+    </div>
+
+</div>
+
+<!-- <div class="row justify-content-center" *ngIf="!verValores">
+    <div class="col text-center mt-3">
+        <button type="button" id="buttonToCalculateCharge" class="btn btn-success" (click)="calculateCharge()">CALCULAR</button>
+    </div>
+</div> -->
