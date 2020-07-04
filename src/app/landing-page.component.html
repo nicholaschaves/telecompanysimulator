@@ -121,9 +121,9 @@
 
     <div class="col text-center mt-3">
         <button type="button" id="buttonToCalculateCharge" class="btn btn-success" (click)="calculateCharge()">{{ptbrLanguage ? 'SIMULAR' : 'SIMULATE'}}</button>
-        <button type="button" id="buttonToShowLog" class="btn btn-dark ml-2" *ngIf="hasLogToShow; else semHistorico" (click)="showLogTableOnClick()">{{ptbrLanguage ? 'HISTÓRICO' : 'LOG TABLE'}}</button>
+        <button type="button" id="buttonToShowLog" class="btn btn-dark ml-2" *ngIf="hasLogToShow; else semHistorico" (click)="showLogTableOnClick()">{{ptbrLanguage ? 'HISTÓRICO' : 'HISTORY'}}</button>
         <ng-template #semHistorico>
-            <button type="button" id="buttonToShowLogDisabled" class="btn btn-light ml-2" disabled>{{ptbrLanguage ? 'HISTÓRICO' : 'LOG TABLE'}}</button>
+            <button type="button" id="buttonToShowLogDisabled" class="btn btn-light ml-2" disabled>{{ptbrLanguage ? 'HISTÓRICO' : 'HISTORY'}}</button>
         </ng-template>
     </div>
 
@@ -148,7 +148,7 @@
                         <td>0{{item.destino}}</td>
                         <td>{{item.minutos}}</td>
                         <td>R$ {{item.resultSemPlanoFixed}}</td>
-                        <td style="background-color: #28a745; color: white; font-weight: bold;">R$ {{item.resultComPlanoFixed}} ({{ptbrLanguage ? item.plano.descricaoPtBr : item.plano.descricaoEnglish}})</td>
+                        <td id="resultComPlano">R$ {{item.resultComPlanoFixed}} ({{ptbrLanguage ? item.plano.descricaoPtBr : item.plano.descricaoEnglish}})</td>
                     </tr>
                 </tbody>
             </table>

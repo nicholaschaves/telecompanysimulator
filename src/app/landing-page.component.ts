@@ -88,7 +88,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
         } else if (this.minutosRestantes == 0) {
           this.phoneCall.resultComPlano = 0;
         } else if (this.minutosRestantes < 0) {
-          this.phoneCall.resultComPlano = Math.abs(this.minutosRestantes) * this.custoLigacao;
+          this.phoneCall.resultComPlano = Math.abs(this.minutosRestantes) * (this.custoLigacao + ((this.custoLigacao * 10) / 100));
         }
 
 
@@ -104,7 +104,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
         } else if (this.minutosRestantes == 0) {
           this.phoneCall.resultComPlano = 0;
         } else if (this.minutosRestantes < 0) {
-          this.phoneCall.resultComPlano = Math.abs(this.minutosRestantes) * this.custoLigacao;
+          this.phoneCall.resultComPlano = Math.abs(this.minutosRestantes) * (this.custoLigacao + ((this.custoLigacao * 10) / 100));
         }
 
       } else if (this.origem == 11 && this.destino == 17) {
@@ -119,7 +119,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
         } else if (this.minutosRestantes == 0) {
           this.phoneCall.resultComPlano = 0;
         } else if (this.minutosRestantes < 0) {
-          this.phoneCall.resultComPlano = Math.abs(this.minutosRestantes) * this.custoLigacao;
+          this.phoneCall.resultComPlano = Math.abs(this.minutosRestantes) * (this.custoLigacao + ((this.custoLigacao * 10) / 100));
         }
 
       } else if (this.origem == 17 && this.destino == 11) {
@@ -134,7 +134,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
         } else if (this.minutosRestantes == 0) {
           this.phoneCall.resultComPlano = 0;
         } else if (this.minutosRestantes < 0) {
-          this.phoneCall.resultComPlano = Math.abs(this.minutosRestantes) * this.custoLigacao;
+          this.phoneCall.resultComPlano = Math.abs(this.minutosRestantes) * (this.custoLigacao + ((this.custoLigacao * 10) / 100));
         }
 
       } else if (this.origem == 11 && this.destino == 18) {
@@ -149,7 +149,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
         } else if (this.minutosRestantes == 0) {
           this.phoneCall.resultComPlano = 0;
         } else if (this.minutosRestantes < 0) {
-          this.phoneCall.resultComPlano = Math.abs(this.minutosRestantes) * this.custoLigacao;
+          this.phoneCall.resultComPlano = Math.abs(this.minutosRestantes) * (this.custoLigacao + ((this.custoLigacao * 10) / 100));
         }
 
       } else if (this.origem == 18 && this.destino == 11) {
@@ -164,7 +164,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
         } else if (this.minutosRestantes == 0) {
           this.phoneCall.resultComPlano = 0;
         } else if (this.minutosRestantes < 0) {
-          this.phoneCall.resultComPlano = Math.abs(this.minutosRestantes) * this.custoLigacao;
+          this.phoneCall.resultComPlano = Math.abs(this.minutosRestantes) * (this.custoLigacao + ((this.custoLigacao * 10) / 100));
         }
       } else {
 
