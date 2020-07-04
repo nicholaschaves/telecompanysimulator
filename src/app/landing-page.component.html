@@ -112,9 +112,9 @@
 
     <div class="col text-center mt-3">
         <button type="button" id="buttonToCalculateCharge" class="btn btn-success" (click)="calculateCharge()">SIMULAR</button>
-        <button type="button" id="buttonToShowLog" class="btn btn-dark ml-sm-2" *ngIf="hasLogToShow; else semHistorico" (click)="showLogTableOnClick()">HISTÓRICO</button>
+        <button type="button" id="buttonToShowLog" class="btn btn-dark ml-2" *ngIf="hasLogToShow; else semHistorico" (click)="showLogTableOnClick()">HISTÓRICO</button>
         <ng-template #semHistorico>
-            <button type="button" id="buttonToShowLog" class="btn btn-light ml-sm-2">HISTÓRICO</button>
+            <button type="button" id="buttonToShowLog" class="btn btn-light ml-2" disabled>HISTÓRICO</button>
         </ng-template>
     </div>
 
@@ -129,8 +129,8 @@
                         <th scope="col">ORIGEM</th>
                         <th scope="col">DESTINO</th>
                         <th scope="col">MINUTOS</th>
-                        <th scope="col">CUSTO SEM PLANO</th>
-                        <th scope="col">CUSTO COM PLANO</th>
+                        <th scope="col">SEM PLANO</th>
+                        <th scope="col">COM PLANO</th>
                     </tr>
                 </thead>
                 <tbody>

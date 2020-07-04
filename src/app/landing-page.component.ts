@@ -33,11 +33,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   showLogTable: boolean = false;
 
 
-  ngOnInit() {
-
-    this.chargePlanos();
-
-  }
+  ngOnInit() { this.chargePlanos(); }
 
   chargePlanos() {
     this.planos = [];
@@ -45,10 +41,6 @@ export class LandingPageComponent implements OnInit, OnDestroy {
     planosFromJson.forEach(plano => {
       this.planos.push(plano);
     });
-  }
-
-  showValuesTable() {
-    this.verValores = !this.verValores;
   }
 
   calculateCharge() {
@@ -185,8 +177,6 @@ export class LandingPageComponent implements OnInit, OnDestroy {
           disableTimeOut: true
         });
 
-        console.log(this.phoneCall);
-
         this.hasLogToShow = true;
       }
 
@@ -194,27 +184,18 @@ export class LandingPageComponent implements OnInit, OnDestroy {
 
   }
 
-  reduceMinutesAccordingToChosenPlan(plano: number, minutos: number) {
-    return plano - minutos;
+  showValuesTable() {
+    this.verValores = !this.verValores;
   }
 
-  cleanLocalProperties() {
-    this.origem = undefined;
-    this.destino = undefined;
-    this.plano = undefined;
-    this.minutos = undefined;
-    this.minutosRestantes = undefined;
-    this.custoLigacao = undefined;
+  reduceMinutesAccordingToChosenPlan(plano: number, minutos: number) {
+    return plano - minutos;
   }
 
   showLogTableOnClick() {
     this.showLogTable = !this.showLogTable;
   }
 
-
-
-  ngOnDestroy() {
-
-  }
+  ngOnDestroy() { }
 
 }
