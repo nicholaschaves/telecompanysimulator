@@ -73,10 +73,10 @@
             <label>Origem</label>
             <select class="form-control" [(ngModel)]="origem">
               <option [ngValue]="undefined">SELECIONE</option>
-              <option [ngValue]="11">11</option>
-              <option [ngValue]="16">16</option>
-              <option [ngValue]="17">17</option>
-              <option [ngValue]="18">18</option>
+              <option [ngValue]="11">011</option>
+              <option [ngValue]="16">016</option>
+              <option [ngValue]="17">017</option>
+              <option [ngValue]="18">018</option>
             </select>
         </div>
     </div>
@@ -85,10 +85,10 @@
             <label>Destino</label>
             <select class="form-control" [(ngModel)]="destino">
               <option [ngValue]="undefined">SELECIONE</option>
-              <option [ngValue]="11">11</option>
-              <option [ngValue]="16">16</option>
-              <option [ngValue]="17">17</option>
-              <option [ngValue]="18">18</option>
+              <option [ngValue]="11">011</option>
+              <option [ngValue]="16">016</option>
+              <option [ngValue]="17">017</option>
+              <option [ngValue]="18">018</option>
             </select>
         </div>
     </div>
@@ -111,7 +111,38 @@
     </div>
 
     <div class="col text-center mt-3">
-        <button type="button" id="buttonToCalculateCharge" class="btn btn-success" (click)="calculateCharge()">CALCULAR</button>
+        <button type="button" id="buttonToCalculateCharge" class="btn btn-success" (click)="calculateCharge()">SIMULAR</button>
+        <button type="button" id="buttonToShowLog" class="btn btn-dark ml-sm-2" *ngIf="hasLogToShow; else semHistorico" (click)="showLogTableOnClick()">HISTÓRICO</button>
+        <ng-template #semHistorico>
+            <button type="button" id="buttonToShowLog" class="btn btn-light ml-sm-2">HISTÓRICO</button>
+        </ng-template>
     </div>
 
+</div>
+
+<div class="row justify-content-center slide-in-right mt-3" *ngIf="showLogTable">
+    <div class="col-12 text-center">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ORIGEM</th>
+                        <th scope="col">DESTINO</th>
+                        <th scope="col">MINUTOS</th>
+                        <th scope="col">CUSTO SEM PLANO</th>
+                        <th scope="col">CUSTO COM PLANO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of phoneCallLog">
+                        <td>0{{item.origem}}</td>
+                        <td>0{{item.destino}}</td>
+                        <td>{{item.minutos}}</td>
+                        <td>R$ {{item.resultSemPlanoFixed}}</td>
+                        <td style="background-color: rgb(5, 197, 5); color: white; font-weight: bold;">R$ {{item.resultComPlanoFixed}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
