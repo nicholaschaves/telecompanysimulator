@@ -103,9 +103,7 @@
             <label>Plano</label>
             <select class="form-control" [(ngModel)]="plano">
                 <option [ngValue]="undefined">SELECIONE</option>
-                <option [ngValue]="30">30</option>
-                <option [ngValue]="60">60</option>
-                <option [ngValue]="120">120</option>
+                <option *ngFor="let plano of planos" [ngValue]="plano.id">{{plano.descricao}}</option>
             </select>
         </div>
     </div>

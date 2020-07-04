@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import * as planosFromJson from '../app/datastore/planos.json';
 import { Plano } from './models/plano';
 import { ToastrService } from 'ngx-toastr';
 import { PhoneCallValue } from './models/phoneCallValue';
@@ -38,9 +37,10 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   chargePlanos() {
     this.planos = [];
 
-    planosFromJson.forEach(plano => {
-      this.planos.push(plano);
-    });
+    this.planos.push({ id: 30, descricao: 'FaleMais 30' });
+    this.planos.push({ id: 60, descricao: 'FaleMais 60' });
+    this.planos.push({ id: 120, descricao: 'FaleMais 120' });
+
   }
 
   calculateCharge() {
