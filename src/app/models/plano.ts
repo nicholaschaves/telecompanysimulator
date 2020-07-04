@@ -1,9 +1,13 @@
 export class Plano {
     id: number;
-    descricao: string;
+    descricaoPtBr: string;
+    descricaoEnglish: string;
 
-    constructor(id: number, descricao: string) {
+
+
+    constructor(id: number, descricaoPtBr: string, descricaoEnglish: string) {
         this.id = id;
-        this.descricao = descricao;
+        this.descricaoPtBr = descricaoPtBr;
+        this.descricaoEnglish = descricaoEnglish;
     }
 }

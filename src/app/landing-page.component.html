@@ -1,7 +1,14 @@
 <div class="row text-center mt-2">
 
+    <div class="col-12 text-right">
+        <img src="assets/flag-pt-br.svg" alt="ptbr" id="ptbrlogo" class="mr-1" (click)="turnLanguageToPortuguese()">
+        <img src="assets/flag-en.svg" alt="ptbr" id="enlogo" (click)="turnLanguageToEnglish()">
+    </div>
+
     <div class="col-12 imageHeader">
-        <img src="assets/vizir-logo.png" alt="vizirLogo" id="vizirLogo">
+        <a href="https://vizir.com.br/" target="_blank">
+            <img src="assets/vizir-logo.png" alt="vizirLogo" id="vizirLogo">
+        </a>
     </div>
 
     <div id="separator"></div>
@@ -10,20 +17,24 @@
 
 <div class="row justify-content-center">
     <div class="col text-center mt-3">
-        <button type="button" id="buttonToTableAction" class="btn btn-secondary" (click)="showValuesTable()">{{!verValores ? 'VISUALIZAR VALORES' : 'ESCONDER VALORES'}}</button>
+        <button type="button" id="buttonToTableActionShow" class="btn btn-secondary" (click)="showValuesTable()" *ngIf="!verValores; else esconderValores">{{ptbrLanguage ? 'VISUALIZAR PREÇOS' : 'SHOW PRICES'}}</button>
+
+        <ng-template #esconderValores>
+            <button type="button" id="buttonToTableActionHide" class="btn btn-secondary" (click)="showValuesTable()">{{ptbrLanguage ? 'ESCONDER PREÇOS' : 'HIDE PRICES'}}</button>
+        </ng-template>
     </div>
 </div>
 
 <div class="row mt-3 justify-content-center scale-in-top" *ngIf="verValores">
 
-    <div class="col-8 text-center">
+    <div class="col-12 text-center">
         <div class="table-responsive">
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">ORIGEM</th>
-                        <th scope="col">DESTINO</th>
-                        <th scope="col">$/MIN</th>
+                        <th scope="col">{{ptbrLanguage ? 'ORIGEM' : 'ORIGIN'}}</th>
+                        <th scope="col">{{ptbrLanguage ? 'DESTINO' : 'DESTINATION'}}</th>
+                        <th scope="col">{{ptbrLanguage ? 'R$/MIN' : 'R$/MIN'}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,9 +81,9 @@
 
     <div class="col-12 col-sm-6 col-md-3">
         <div class="form-group">
-            <label>Origem</label>
+            <label>{{ptbrLanguage ? 'Origem' : 'Origin'}}</label>
             <select class="form-control" [(ngModel)]="origem">
-              <option [ngValue]="undefined">SELECIONE</option>
+              <option [ngValue]="undefined">{{ptbrLanguage ? 'SELECIONE' : 'SELECT'}}</option>
               <option [ngValue]="11">011</option>
               <option [ngValue]="16">016</option>
               <option [ngValue]="17">017</option>
@@ -82,9 +93,9 @@
     </div>
     <div class="col-12 col-sm-6 col-md-3">
         <div class="form-group">
-            <label>Destino</label>
+            <label>{{ptbrLanguage ? 'Destino' : 'Destination'}}</label>
             <select class="form-control" [(ngModel)]="destino">
-              <option [ngValue]="undefined">SELECIONE</option>
+              <option [ngValue]="undefined">{{ptbrLanguage ? 'SELECIONE' : 'SELECT'}}</option>
               <option [ngValue]="11">011</option>
               <option [ngValue]="16">016</option>
               <option [ngValue]="17">017</option>
@@ -94,25 +105,25 @@
     </div>
     <div class="col-12 col-sm-6 col-md-3">
         <div class="form-group">
-            <label>Minutos</label>
+            <label>{{ptbrLanguage ? 'Minutos' : 'Minutes'}}</label>
             <input type="number" class="form-control" [(ngModel)]="minutos" placeholder="Ex: 10">
         </div>
     </div>
     <div class="col-12 col-sm-6 col-md-3">
         <div class="form-group">
-            <label>Plano</label>
+            <label>{{ptbrLanguage ? 'Plano' : 'Plan'}}</label>
             <select class="form-control" [(ngModel)]="plano">
-                <option [ngValue]="undefined">SELECIONE</option>
-                <option *ngFor="let plano of planos" [ngValue]="plano.id">{{plano.descricao}}</option>
+                <option [ngValue]="undefined">{{ptbrLanguage ? 'SELECIONE' : 'SELECT'}}</option>
+                <option *ngFor="let plano of planos" [ngValue]="plano.id">{{ptbrLanguage ? plano.descricaoPtBr : plano.descricaoEnglish}}</option>
             </select>
         </div>
     </div>
 
     <div class="col text-center mt-3">
-        <button type="button" id="buttonToCalculateCharge" class="btn btn-success" (click)="calculateCharge()">SIMULAR</button>
-        <button type="button" id="buttonToShowLog" class="btn btn-dark ml-2" *ngIf="hasLogToShow; else semHistorico" (click)="showLogTableOnClick()">HISTÓRICO</button>
+        <button type="button" id="buttonToCalculateCharge" class="btn btn-success" (click)="calculateCharge()">{{ptbrLanguage ? 'SIMULAR' : 'SIMULATE'}}</button>
+        <button type="button" id="buttonToShowLog" class="btn btn-dark ml-2" *ngIf="hasLogToShow; else semHistorico" (click)="showLogTableOnClick()">{{ptbrLanguage ? 'HISTÓRICO' : 'LOG TABLE'}}</button>
         <ng-template #semHistorico>
-            <button type="button" id="buttonToShowLog" class="btn btn-light ml-2" disabled>HISTÓRICO</button>
+            <button type="button" id="buttonToShowLogDisabled" class="btn btn-light ml-2" disabled>{{ptbrLanguage ? 'HISTÓRICO' : 'LOG TABLE'}}</button>
         </ng-template>
     </div>
 
@@ -124,11 +135,11 @@
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">ORIGEM</th>
-                        <th scope="col">DESTINO</th>
-                        <th scope="col">MINUTOS</th>
-                        <th scope="col">SEM PLANO</th>
-                        <th scope="col">COM PLANO</th>
+                        <th scope="col">{{ptbrLanguage ? 'ORIGEM' : 'ORIGIN'}}</th>
+                        <th scope="col">{{ptbrLanguage ? 'DESTINO' : 'DESTINATION'}}</th>
+                        <th scope="col">{{ptbrLanguage ? 'MINUTOS' : 'MINUTES'}}</th>
+                        <th scope="col">{{ptbrLanguage ? 'SEM PLANO' : 'WITHOUT PLAN'}}</th>
+                        <th scope="col">{{ptbrLanguage ? 'COM PLANO' : 'WITH PLAN'}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -137,7 +148,7 @@
                         <td>0{{item.destino}}</td>
                         <td>{{item.minutos}}</td>
                         <td>R$ {{item.resultSemPlanoFixed}}</td>
-                        <td style="background-color: rgb(5, 197, 5); color: white; font-weight: bold;">R$ {{item.resultComPlanoFixed}}</td>
+                        <td style="background-color: #28a745; color: white; font-weight: bold;">R$ {{item.resultComPlanoFixed}} ({{ptbrLanguage ? item.plano.descricaoPtBr : item.plano.descricaoEnglish}})</td>
                     </tr>
                 </tbody>
             </table>

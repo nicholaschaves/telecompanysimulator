@@ -31,28 +31,46 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   hasLogToShow: boolean = false;
   showLogTable: boolean = false;
 
+  ptbrLanguage: boolean = true;
+
 
   ngOnInit() { this.chargePlanos(); }
 
   chargePlanos() {
     this.planos = [];
 
-    this.planos.push({ id: 30, descricao: 'FaleMais 30' });
-    this.planos.push({ id: 60, descricao: 'FaleMais 60' });
-    this.planos.push({ id: 120, descricao: 'FaleMais 120' });
+    this.planos.push({ id: 30, descricaoPtBr: 'FaleMais 30', descricaoEnglish: 'SpeakMore 30' });
+    this.planos.push({ id: 60, descricaoPtBr: 'FaleMais 60', descricaoEnglish: 'SpeakMore 30' });
+    this.planos.push({ id: 120, descricaoPtBr: 'FaleMais 120', descricaoEnglish: 'SpeakMore 30' });
 
   }
 
   calculateCharge() {
 
     if (this.origem == null || this.origem == undefined) {
-      this.toastr.error('O campo origem é obrigatório!');
+      if (this.ptbrLanguage == true) {
+        this.toastr.error('O campo origem é obrigatório!');
+      } else {
+        this.toastr.error('The origin field is required');
+      }
     } else if (this.destino == null || this.destino == undefined) {
-      this.toastr.error('O campo destino é obrigatório!');
+      if (this.ptbrLanguage == true) {
+        this.toastr.error('O campo destino é obrigatório!');
+      } else {
+        this.toastr.error('The destination field is required');
+      }
     } else if (this.minutos == null || this.minutos == undefined) {
-      this.toastr.error('O campo minutos é obrigatório!');
+      if (this.ptbrLanguage == true) {
+        this.toastr.error('O campo minutos é obrigatório!');
+      } else {
+        this.toastr.error('The minutes field is required');
+      }
     } else if (this.plano == null || this.plano == undefined) {
-      this.toastr.error('O campo plano é obrigatório!');
+      if (this.ptbrLanguage == true) {
+        this.toastr.error('O campo plano é obrigatório!');
+      } else {
+        this.toastr.error('The plan field is required');
+      }
     } else {
 
       this.phoneCall = new PhoneCallValue();
@@ -150,7 +168,12 @@ export class LandingPageComponent implements OnInit, OnDestroy {
         }
       } else {
 
-        this.toastr.error('Os DDDs escolhidos ainda não possuem precificação, verifique a tabela de valores, por gentileza.');
+        if (this.ptbrLanguage == true) {
+          this.toastr.error('Os DDDs escolhidos ainda não possuem precificação, verifique a tabela de valores, por gentileza.', 'Operação Indisponível', { timeOut: 5000 });
+        } else {
+          this.toastr.error('There are no prices for the choosen origin and destinations yet. Please, contact support.', 'Unavailable Operation', { timeOut: 5000 });
+        }
+
         this.precificacao = false;
       }
 
@@ -171,11 +194,21 @@ export class LandingPageComponent implements OnInit, OnDestroy {
 
         this.phoneCallLog.push(this.phoneCall);
 
-        this.toastr.success(`Custo com plano: R$ ${this.phoneCall.resultComPlanoFixed} | Custo sem plano: R$ ${this.phoneCall.resultSemPlanoFixed}`, `Plano FaleMais${this.plano}`, {
-          positionClass: 'toast-bottom-full-width',
-          closeButton: true,
-          disableTimeOut: true
-        });
+        if (this.ptbrLanguage == true) {
+          this.toastr.success(`Custo com plano: R$ ${this.phoneCall.resultComPlanoFixed} | Custo sem plano: R$ ${this.phoneCall.resultSemPlanoFixed}`, `Plano FaleMais${this.plano}`, {
+            positionClass: 'toast-bottom-full-width',
+            closeButton: true,
+            disableTimeOut: true
+          });
+        } else {
+          this.toastr.success(`Cost with plan: R$ ${this.phoneCall.resultComPlanoFixed} | Cost without plan: R$ ${this.phoneCall.resultSemPlanoFixed}`, `Plan SpeakMore${this.plano}`, {
+            positionClass: 'toast-bottom-full-width',
+            closeButton: true,
+            disableTimeOut: true
+          });
+        }
+
+
 
         this.hasLogToShow = true;
       }
@@ -194,6 +227,14 @@ export class LandingPageComponent implements OnInit, OnDestroy {
 
   showLogTableOnClick() {
     this.showLogTable = !this.showLogTable;
+  }
+
+  turnLanguageToPortuguese() {
+    this.ptbrLanguage = true;
+  }
+
+  turnLanguageToEnglish() {
+    this.ptbrLanguage = false;
   }
 
   ngOnDestroy() { }

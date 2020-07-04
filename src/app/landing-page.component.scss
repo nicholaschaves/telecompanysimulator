@@ -8,7 +8,7 @@
     width: 50%;
     border-bottom: 2px solid rgba(255, 71, 74, 1);
     margin-left: 25%;
-    margin-top: 10px;
+    margin-top: 14px;
 }
 
 table {
@@ -54,7 +54,8 @@ table {
     }
 }
 
-#buttonToTableAction {
+#buttonToTableActionShow,
+#buttonToTableActionShow {
     font-size: 12px;
     font-weight: bold;
 }
@@ -134,4 +135,19 @@ table {
         transform: translateX(1000px);
         opacity: 0;
     }
+}
+
+#buttonToShowLogDisabled {
+    cursor: not-allowed;
+}
+
+#ptbrlogo {
+    width: 30px;
+    cursor: pointer;
+}
+
+#enlogo {
+    width: 26px;
+    cursor: pointer;
+    margin-right: 26px;
 }
