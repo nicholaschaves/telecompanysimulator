@@ -1,4 +1,4 @@
-# Vizir Challenge
+# Telecompany Simulator
 
 This project was developed with Angular version 7.3.8.
 
@@ -12,7 +12,7 @@ Run `ng test` for deploy the test spec of the application.
 
 ---
 
-# Desafio Vizir
+# Simulador Telecompany
 Este projeto foi desenvolvido com a versão 7.3.8 do Angular
 
 # Comando de execução (dev)
